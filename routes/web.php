@@ -38,16 +38,10 @@ Route::group(['prefix'=>'admin'], function(){
 
     Route::group(['prefix' => 'roles'], function () {
         Route::get('/', ['as'=>'admin.roles','uses'=>'RoleController@index']);
-        // Route::get('edit/{id}', ['as'=>'admin.roles.edit','uses'=>'UserController@edit']);
-        // Route::post('edit/{id}', ['as'=>'admin.roles.edit','uses'=>'UserController@update']);
-        // Route::post('delete/{id}', ['as'=>'admin.roles.delete','uses'=>'UserController@delete']);
     });
 
     Route::group(['prefix' => 'users'], function () {
         Route::get('/', ['as'=>'admin.users','uses'=>'UserController@index']);
-        // Route::get('edit/{id}', ['as'=>'admin.users.edit','uses'=>'UserController@edit']);
-        // Route::post('edit/{id}', ['as'=>'admin.users.edit','uses'=>'UserController@update']);
-        // Route::post('delete/{id}', ['as'=>'admin.users.delete','uses'=>'UserController@delete']);
     });
 
     Route::group(['prefix' => 'categories'], function () {
@@ -56,28 +50,6 @@ Route::group(['prefix'=>'admin'], function(){
             'uses' => 'CategoryController@index'
         ]);
     });
-
-    // Route::group(['prefix' => 'locations'], function () {
-    //     Route::get('/', [
-    //         'as' => 'location.index',
-    //         'uses' => 'LocationController@index'
-    //     ]);
-        
-    //     Route::post('/store', [
-    //         'as' => 'location.store',
-    //         'uses' => 'LocationController@store'
-    //     ]);
-
-    //     Route::post('/edit', [
-    //         'as' => 'location.edit',
-    //         'uses' => 'LocationController@edit'
-    //     ]);
-
-    //     Route::post('/delete', [
-    //         'as' => 'location.delete',
-    //         'uses' => 'LocationController@destroy'
-    //     ]);
-    // });
 
     Route::resource('locations', 'LocationController')->names(
         [

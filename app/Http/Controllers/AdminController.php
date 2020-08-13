@@ -40,7 +40,6 @@ class AdminController extends Controller
         if ($validator->fails()) {
             return redirect()->route('login')->withErrors($validator)->withInput();
         }
-        else {
             $remember = $request->has('remember_me') ? true : false;
             $email = $request->input('email');
             $password = $request->input('password');
@@ -48,11 +47,10 @@ class AdminController extends Controller
               
                 return redirect()->route('admin.home');
             }
-            else {
                 Session::flash('error', 'Email or password invalidate');
 			    return redirect()->route('login');
-            }
-        }
+
+        
         
 
     }
