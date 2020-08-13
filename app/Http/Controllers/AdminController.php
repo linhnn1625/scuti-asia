@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -39,21 +40,17 @@ class AdminController extends Controller
         if ($validator->fails()) {
             return redirect()->route('login')->withErrors($validator)->withInput();
         }
-        else {
             $remember = $request->has('remember_me') ? true : false;
             $email = $request->input('email');
             $password = $request->input('password');
-            if (auth()->attempt([
-                'email' => $email,
-                'password' => $password
-            ], $remember)) {
+            if (Auth::attempt(['email' => $email,'password' => $password], $remember)) {
+              
                 return redirect()->route('admin.home');
             }
-            else {
                 Session::flash('error', 'Email or password invalidate');
 			    return redirect()->route('login');
-            }
-        }
+
+        
         
 
     }
